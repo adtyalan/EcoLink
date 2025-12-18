@@ -14,16 +14,16 @@ const ButtonCheckout = dynamic(
     ssr: false,
     loading: () => (
       <p className="flex items-center justify-center w-full h-full text-sm">
-        Continue
+        Lanjutkan
       </p>
     ),
-  },
+  }
 );
 
 export async function generateMetadata() {
   return {
-    title: "Cart | Ecommerce Template",
-    description: `Cart at e-commerce template made by Marcos Cámara`,
+    title: "Keranjang | Toko Online",
+    description: `Keranjang belanja Anda di Toko Online`,
   };
 }
 
@@ -46,16 +46,16 @@ const CartPage = async () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-91px)] gap-2 px-4">
-      <h1 className="mb-6 text-4xl font-bold">YOUR CART IS EMPTY</h1>
+      <h1 className="mb-6 text-4xl font-bold">KERANJANG ANDA KOSONG</h1>
       <p className="mb-4 text-lg">
-        Not registered? You must be in order to save your products in the
-        shopping cart.
+        Belum terdaftar? Anda harus mendaftar untuk menyimpan produk di
+        keranjang belanja.
       </p>
       <Link
         className="flex font-medium	 items-center bg-[#0C0C0C] justify-center text-sm min-w-[160px] max-w-[160px] h-[40px] px-[10px] rounded-md border border-solid border-[#2E2E2E] transition-all hover:bg-[#1F1F1F] hover:border-[#454545]"
         href="/login"
       >
-        Login
+        Masuk
       </Link>
     </div>
   );
@@ -71,13 +71,13 @@ const ProductsCart = async ({ session }: { session: Session }) => {
       .reduce(
         (total: number, cartItem: any) =>
           total + cartItem.price * cartItem.quantity,
-        0,
+        0
       )
       .toFixed(2);
   };
 
   const filteredCart: EnrichedProducts[] | undefined = await getItems(
-    session.user._id,
+    session.user._id
   );
   const totalPrice = calculateTotalPrice(filteredCart);
 
@@ -85,7 +85,7 @@ const ProductsCart = async ({ session }: { session: Session }) => {
     return (
       <div className="pt-12">
         <h2 className="mb-5 text-xl font-bold sm:text-2xl">
-          YOUR SHOPPING CART
+          KERANJANG BELANJA ANDA
         </h2>
         <Products products={filteredCart} extraClassname={"cart-ord-mobile"} />
 
@@ -93,9 +93,9 @@ const ProductsCart = async ({ session }: { session: Session }) => {
           <div className="flex flex-col p-2.5 justify-center w-1/2 gap-2 text-center">
             <div className="flex gap-2.5 justify-center text-sm">
               <span>Total:</span>
-              <span>{totalPrice}€</span>
+              <span>{totalPrice} Rp</span>
             </div>
-            <span className="text-xs">+ TAX INCL.</span>
+            <span className="text-xs">+ PAJAK TERMASUK</span>
           </div>
           <div className="w-1/2 border-l border-solid bg-background-secondary border-border-primary">
             <ButtonCheckout session={session} cartWithProducts={filteredCart} />
@@ -107,16 +107,16 @@ const ProductsCart = async ({ session }: { session: Session }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-91px)] gap-2 px-4">
-      <h1 className="mb-6 text-4xl font-bold">YOUR CART IS EMPTY</h1>
+      <h1 className="mb-6 text-4xl font-bold">KERANJANG ANDA KOSONG</h1>
       <p className="mb-4 text-lg">
-        When you have added something to your cart, it will appear here. Want to
-        get started?
+        Ketika Anda telah menambahkan sesuatu ke keranjang, itu akan muncul di
+        sini. Ingin memulai?
       </p>
       <Link
         className="flex font-medium	 items-center bg-[#0C0C0C] justify-center text-sm min-w-[160px] max-w-[160px] h-[40px] px-[10px] rounded-md border border-solid border-[#2E2E2E] transition-all hover:bg-[#1F1F1F] hover:border-[#454545]"
         href="/"
       >
-        Start
+        Mulai Belanja
       </Link>
     </div>
   );

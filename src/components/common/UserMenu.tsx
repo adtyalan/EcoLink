@@ -12,12 +12,19 @@ import Link from "next/link";
 import { Session } from "next-auth";
 import dynamic from "next/dynamic";
 import SignOutButton from "../account/SignOutButton";
+import { useState } from "react";
 
 const EditProfile = dynamic(() => import("./EditProfile"), {
   ssr: false,
 });
 
+const AddProductModal = dynamic(() => import("../products/AddProductModal"), {
+  ssr: false,
+});
+
 export function UserMenu({ fastSession }: { fastSession: Session }) {
+  const [activeDialog, setActiveDialog] = useState<"edit" | "add" | null>(null);
+
   return (
     <Dialog>
       <DropdownMenu>
@@ -26,13 +33,16 @@ export function UserMenu({ fastSession }: { fastSession: Session }) {
             {fastSession.user.name.split(" ")[0]}
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-40">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuContent className="w-44">
+          <DropdownMenuLabel>Akun Saya</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <DialogTrigger asChild>
-                <button className="flex items-center w-full h-full">
+                <button
+                  className="flex items-center w-full h-full"
+                  onClick={() => setActiveDialog("edit")}
+                >
                   <svg
                     data-testid="geist-icon"
                     height="16"
@@ -49,7 +59,33 @@ export function UserMenu({ fastSession }: { fastSession: Session }) {
                       fill="currentColor"
                     ></path>
                   </svg>
-                  <span>Edit profile</span>
+                  <span>Edit Profil</span>
+                </button>
+              </DialogTrigger>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <DialogTrigger asChild>
+                <button
+                  className="flex items-center w-full h-full"
+                  onClick={() => setActiveDialog("add")}
+                >
+                  <svg
+                    data-testid="geist-icon"
+                    height="16"
+                    strokeLinejoin="round"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    className="mr-2"
+                    style={{ color: "currentColor" }}
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M7.25 1.5C6.97386 1.5 6.75 1.72386 6.75 2V6.75H2C1.72386 6.75 1.5 6.97386 1.5 7.25C1.5 7.52614 1.72386 7.75 2 7.75H6.75V12.5C6.75 12.7761 6.97386 13 7.25 13C7.52614 13 7.75 12.7761 7.75 12.5V7.75H12.5C12.7761 7.75 13 7.52614 13 7.25C13 6.97386 12.7761 6.75 12.5 6.75H7.75V2C7.75 1.72386 7.52614 1.5 7.25 1.5Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                  <span>Tambah Produk</span>
                 </button>
               </DialogTrigger>
             </DropdownMenuItem>
@@ -71,7 +107,7 @@ export function UserMenu({ fastSession }: { fastSession: Session }) {
                     fill="currentColor"
                   ></path>
                 </svg>
-                <span>View orders</span>
+                <span>Lihat Pesanan</span>
               </Link>
             </DropdownMenuItem>
           </DropdownMenuGroup>
@@ -81,7 +117,8 @@ export function UserMenu({ fastSession }: { fastSession: Session }) {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <EditProfile />
+      {activeDialog === "edit" ? <EditProfile /> : null}
+      {activeDialog === "add" ? <AddProductModal /> : null}
     </Dialog>
   );
 }

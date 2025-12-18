@@ -32,9 +32,9 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
   };
 
   const linksData = [
-    { path: "/t-shirts", name: "T-SHIRTS" },
-    { path: "/pants", name: "PANTS" },
-    { path: "/sweatshirts", name: "SWEATSHIRTS" },
+    { path: "/limbah", name: "LIMBAH" },
+    { path: "/makanan", name: "MAKANAN" },
+    { path: "/kerajinan", name: "KERAJINAN" },
   ];
 
   const authLinks = () => {
@@ -61,10 +61,38 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
                       fill="currentColor"
                     ></path>
                   </svg>
-                  <span>Edit profile</span>
+                  <span>Edit Profil</span>
                 </button>
               </DialogTrigger>
               <EditProfile />
+            </Dialog>
+          </li>
+
+          <li className="flex lg:hidden">
+            <Dialog>
+              <DialogTrigger asChild>
+                <button className="flex items-center w-full h-full px-4 py-2">
+                  <svg
+                    data-testid="geist-icon"
+                    height="16"
+                    strokeLinejoin="round"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    className="mr-2"
+                    style={{ color: "currentColor" }}
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M7.25 1.5C6.97386 1.5 6.75 1.72386 6.75 2V6.75H2C1.72386 6.75 1.5 6.97386 1.5 7.25C1.5 7.52614 1.72386 7.75 2 7.75H6.75V12.5C6.75 12.7761 6.97386 13 7.25 13C7.52614 13 7.75 12.7761 7.75 12.5V7.75H12.5C12.7761 7.75 13 7.52614 13 7.25C13 6.97386 12.7761 6.75 12.5 6.75H7.75V2C7.75 1.72386 7.52614 1.5 7.25 1.5Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                  <span>Tambah Produk</span>
+                </button>
+              </DialogTrigger>
+              {/** lazy import to avoid ssr issues **/}
+              {require("../products/AddProductModal").default()}
             </Dialog>
           </li>
 
@@ -81,7 +109,7 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
             onClick={() => setIsHeaderOpen(false)}
             className="text-sm px-4 py-2 transition-all lg:text-[#A1A1A1] hover:text-[#EDEDED] font-medium"
           >
-            Login
+            Masuk
           </Link>
         </li>
       );
@@ -114,7 +142,9 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
       </button>
 
       <div
-        className={`fixed top-0 left-0 h-screen w-full bg-background-secondary py-6 px-3.5 xs:px-6 transition ease duration-200 z-20 translate-x-0 ${isHeaderOpen ? "translate-x-0" : "translate-x-hide"}`}
+        className={`fixed top-0 left-0 h-screen w-full bg-background-secondary py-6 px-3.5 xs:px-6 transition ease duration-200 z-20 translate-x-0 ${
+          isHeaderOpen ? "translate-x-0" : "translate-x-hide"
+        }`}
       >
         <ul className="flex justify-between text-sm gap-9">
           <li>
@@ -178,7 +208,7 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
                         fill="currentColor"
                       ></path>
                     </svg>
-                    <span>View orders</span>
+                    <span>Lihat Pesanan</span>
                   </Link>
                 </li>
                 <li className="px-4 py-2 w-[110px] mx-auto">
@@ -205,7 +235,7 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
         <li className="flex items-center justify-center">
           <Link
             href="/cart"
-            aria-label="Products saved in the shopping cart"
+            aria-label="Produk yang disimpan di keranjang belanja"
             className="text-sm py-3 px-3 rounded-md transition-all text-[#EDEDED] hover:bg-[#1F1F1F] relative"
           >
             <svg
@@ -231,7 +261,7 @@ export const Navbar = ({ session, totalItemsCart, totalWishlists }: Navbar) => {
         <li className="flex items-center justify-center">
           <Link
             href="/wishlist"
-            aria-label="Products saved in whishlist"
+            aria-label="Produk yang disimpan di wishlist"
             className="text-sm py-3 px-3 rounded-md transition-all text-[#EDEDED] hover:bg-[#1F1F1F] relative"
           >
             <svg

@@ -9,7 +9,7 @@ import { authOptions } from "@/libs/auth";
 
 export async function generateMetadata() {
   return {
-    title: `Orders | Ecommerce Template`,
+    title: `Pesanan | Toko Online`,
   };
 }
 
@@ -32,13 +32,15 @@ const UserOrders = async () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-[calc(100vh-91px)] gap-2 px-4">
-      <h2 className="mb-6 text-4xl font-bold">NO ORDERS YET</h2>
-      <p className="mb-4 text-lg">To view your orders you must be logged in.</p>
+      <h2 className="mb-6 text-4xl font-bold">BELUM ADA PESANAN</h2>
+      <p className="mb-4 text-lg">
+        Untuk melihat pesanan Anda, Anda harus masuk.
+      </p>
       <Link
         className="flex font-medium	 items-center bg-[#0C0C0C] justify-center text-sm min-w-[160px] max-w-[160px] h-[40px] px-[10px] rounded-md border border-solid border-[#2E2E2E] transition-all hover:bg-[#1F1F1F] hover:border-[#454545]"
         href="/login"
       >
-        Login
+        Masuk
       </Link>
     </div>
   );
@@ -50,15 +52,15 @@ const Orders = async () => {
   if (orders === undefined || orders === null) {
     return (
       <div className="flex flex-col items-center justify-center w-full h-[80vh] gap-2 px-4">
-        <h2 className="mb-6 text-4xl font-bold">NO ORDERS YET</h2>
+        <h2 className="mb-6 text-4xl font-bold">BELUM ADA PESANAN</h2>
         <p className="mb-4 text-lg">
-          To create an order add a product to the cart and buy it!
+          Untuk membuat pesanan, tambahkan produk ke keranjang dan beli!
         </p>
         <Link
           className="flex font-medium	 items-center bg-[#0C0C0C] justify-center text-sm min-w-[160px] max-w-[160px] h-[40px] px-[10px] rounded-md border border-solid border-[#2E2E2E] transition-all hover:bg-[#1F1F1F] hover:border-[#454545]"
           href="/"
         >
-          Start
+          Mulai Belanja
         </Link>
       </div>
     );

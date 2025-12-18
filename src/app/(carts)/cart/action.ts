@@ -75,11 +75,43 @@ export async function getItems(userId: string) {
 }
 
 export async function getTotalItems(session: Session | null) {
-  const cart: Cart | null = await kv.get(`cart-${session?.user._id}`);
-  const total: number =
-    cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
+  try {
+    const userId = session?.user?._id;
+    if (!userId) return 0;
 
-  return total;
+    const cart: Cart | null = await kv.get(`cart-${userId}`);
+    if (!cart || !cart.items || cart.items.length === 0) return 0;
+
+    // Validate items against DB so badge reflects actual renderable items
+    await connectDB();
+
+    const validItems: Cart["items"] = [];
+    for (const item of cart.items) {
+      try {
+        const product = await Product.findById(item.productId);
+        if (!product) continue;
+        const hasVariant = product.variants?.some(
+          (v: any) => v.priceId === item.variantId,
+        );
+        if (!hasVariant) continue;
+        validItems.push(item);
+      } catch {
+        // ignore invalid entries
+      }
+    }
+
+    // Optionally prune invalid items from KV to prevent future mismatches
+    if (validItems.length !== cart.items.length) {
+      const updated = { userId, items: validItems } as Cart;
+      await kv.set(`cart-${userId}`, updated);
+    }
+
+    const total = validItems.reduce((sum, it) => sum + (it.quantity || 0), 0);
+    return total;
+  } catch (e) {
+    console.error("Error computing total cart items:", e);
+    return 0;
+  }
 }
 
 export async function addItem(

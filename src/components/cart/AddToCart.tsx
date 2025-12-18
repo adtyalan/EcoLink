@@ -26,17 +26,15 @@ export default function AddToCart({
 
   const handleAddToCart = useCallback(() => {
     if (!session) {
-      toast.info(
-        "You must be registered to be able to add a product to the cart."
-      );
+      toast.info("Anda harus terdaftar untuk menambahkan produk ke keranjang.");
       return;
     }
     if (!selectedVariant?.priceId) {
-      toast.info("You have to select a color to save the product.");
+      toast.info("Anda harus memilih warna untuk menyimpan produk.");
       return;
     }
     if (!selectedSize) {
-      toast.info("You have to select a size to save the product.");
+      toast.info("Anda harus memilih ukuran untuk menyimpan produk.");
       return;
     }
     startTransition(() => {

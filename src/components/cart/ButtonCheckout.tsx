@@ -29,7 +29,7 @@ const ButtonCheckout = ({ cartWithProducts, session }: ButtonCheckoutProps) => {
 
   const buyProducts = useCallback(async () => {
     if (!session) {
-      toast.error("User information not found");
+      toast.error("Informasi pengguna tidak ditemukan");
       return;
     }
 
@@ -49,7 +49,7 @@ const ButtonCheckout = ({ cartWithProducts, session }: ButtonCheckoutProps) => {
     } catch (error) {
       console.error(error);
       toast.error(
-        "An error occurred while processing your request. Please try again."
+        "Terjadi kesalahan saat memproses permintaan Anda. Silakan coba lagi."
       );
     }
   }, [session, lineItems]);
@@ -59,7 +59,7 @@ const ButtonCheckout = ({ cartWithProducts, session }: ButtonCheckoutProps) => {
       onClick={() => startTransition(buyProducts)}
       className="w-full text-sm p-2.5 h-full transition-all hover:bg-color-secondary"
     >
-      {isPending ? <Loader height={20} width={20} /> : "Continue"}
+      {isPending ? <Loader height={20} width={20} /> : "Lanjutkan"}
     </button>
   );
 };

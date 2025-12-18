@@ -33,8 +33,8 @@ const SearchInput = () => {
         </svg>
       </span>
       <input
-        placeholder="Search Products..."
-        aria-label="Search"
+        placeholder="Cari Produk..."
+        aria-label="Cari"
         className="w-full h-[40px] px-3 bg-[#0A0A0A] text-sm focus:outline-none"
         type="search"
         defaultValue={searchParams.get("q")?.toString()}

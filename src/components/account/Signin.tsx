@@ -67,7 +67,7 @@ const Signin = () => {
             <div className="text-sm">{error}</div>
           </div>
         )}
-        <h1 className="w-full mb-5 text-2xl font-bold">Signin</h1>
+        <h1 className="w-full mb-5 text-2xl font-bold">Masuk</h1>
 
         <label className={labelStyles}>Email:</label>
         <input
@@ -77,7 +77,7 @@ const Signin = () => {
           name="email"
         />
 
-        <label className={labelStyles}>Password:</label>
+        <label className={labelStyles}>Kata Sandi:</label>
         <div className="flex w-full">
           <input
             type={showPassword ? "text" : "password"}
@@ -132,13 +132,13 @@ const Signin = () => {
           className="w-full bg-black border border-solid border-[#2E2E2E] py-1.5 mt-2.5 rounded transition-all hover:bg-[#1F1F1F] hover:border-[#454545] text-13"
           type="submit"
         >
-          Signup
+          Masuk
         </button>
 
         <div className="relative flex items-center justify-center w-full h-10">
           <div className="absolute w-full h-px top-2/4 bg-[#2E2E2E]"></div>
           <p className="z-10 flex items-center justify-center w-8 h-6 bg-[#0A0A0A]">
-            or
+            atau
           </p>
         </div>
 
@@ -175,13 +175,13 @@ const Signin = () => {
               fill="#EA4335"
             ></path>
           </svg>{" "}
-          Sign in with Google
+          Masuk dengan Google
         </button>
         <Link
           href="/register"
           className="text-sm transition duration-150 text-[#A1A1A1] ease hover:text-white"
         >
-          Don&apos;t have an account?
+          Belum punya akun?
         </Link>
       </form>
     </section>

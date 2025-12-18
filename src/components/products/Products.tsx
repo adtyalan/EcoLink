@@ -6,6 +6,7 @@ import { Skeleton } from "../ui/skeleton";
 import { Wishlists, getTotalWishlist } from "@/app/(carts)/wishlist/action";
 import { Session, getServerSession } from "next-auth";
 import { authOptions } from "@/libs/auth";
+import { formatPrice } from "@/helpers/indonesianTranslations";
 
 const WishlistButton = dynamic(() => import("../cart/WishlistButton"), {
   loading: () => <Skeleton className="w-5 h-5" />,
@@ -106,7 +107,9 @@ export const Products = async ({
               </div>
               {!purchased && (
                 <div className="text-sm">
-                  {quantity ? (price * quantity).toFixed(2) : price} €
+                  {quantity
+                    ? formatPrice(price * quantity)
+                    : formatPrice(price)}
                 </div>
               )}
               {quantity !== undefined && <ProductCartInfo product={product} />}

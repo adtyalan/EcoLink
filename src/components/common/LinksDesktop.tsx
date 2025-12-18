@@ -18,7 +18,7 @@ export function LinksDesktop() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Collections</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Koleksi</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -28,27 +28,28 @@ export function LinksDesktop() {
                     href="/"
                   >
                     <div className="mt-4 mb-1 text-sm font-medium">
-                      VIEW ALL
+                      LIHAT SEMUA
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Discover wardrobe staples for every occasion.
+                      Temukan produk pilihan untuk setiap kebutuhan Anda.
                     </p>
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/t-shirts" title="T-SHIRTS">
-                Our men&apos;s T-shirts offer timeless style in a range of
-                designs, colors, and textures. From classic to contemporary,
-                find the perfect tee for any occasion.
+              <ListItem href="/limbah" title="LIMBAH">
+                Temukan produk limbah yang dapat didaur ulang untuk mendukung
+                gaya hidup berkelanjutan. Setiap pembelian membantu mengurangi
+                limbah dan menjaga lingkungan kita.
               </ListItem>
-              <ListItem href="/pants" title="PANTS">
-                Explore essential men&apos;s pants for all occasions. From
-                classic chinos to modern joggers, find your perfect fit in a
-                variety of styles and colors.
+              <ListItem href="/makanan" title="MAKANAN">
+                Ambil sisa makanan gratis yang masih layak konsumsi. Cukup
+                checkout dan nikmati makanan berkualitas tanpa membayar.
+                Berkontribusi pada zero waste initiative kami.
               </ListItem>
-              <ListItem href="/sweatshirts" title="SWEATSHIRTS">
-                Much like the T-shirt, men&apos;s sweatshirts are far more than
-                a basic.
+              <ListItem href="/kerajinan" title="KERAJINAN">
+                Koleksi produk kerajinan tangan yang ramah lingkungan.
+                Diproduksi dengan bahan berkelanjutan dan mendukung artisan
+                lokal untuk masa depan yang lebih hijau.
               </ListItem>
             </ul>
           </NavigationMenuContent>

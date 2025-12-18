@@ -8,8 +8,8 @@ import { Loader } from "@/components/common/Loader";
 
 export async function generateMetadata() {
   return {
-    title: "Wishlists | Ecommerce Template",
-    description: `Wishlists at e-commerce template made by Marcos Cámara`,
+    title: "Wishlist | Toko Online",
+    description: `Wishlist Anda di Toko Online`,
   };
 }
 
@@ -32,15 +32,16 @@ const Wishlists = async () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-91px)] gap-2 px-4">
-      <h1 className="mb-6 text-4xl font-bold">YOUR WISHLIST IS EMPTY</h1>
+      <h1 className="mb-6 text-4xl font-bold">WISHLIST ANDA KOSONG</h1>
       <p className="mb-4 text-lg">
-        Not registered? You must be in order to save your favorite products.
+        Belum terdaftar? Anda harus mendaftar untuk menyimpan produk favorit
+        Anda.
       </p>
       <Link
         className="flex font-medium	 items-center bg-[#0C0C0C] justify-center text-sm min-w-[160px] max-w-[160px] h-[40px] px-[10px] rounded-md border border-solid border-[#2E2E2E] transition-all hover:bg-[#1F1F1F] hover:border-[#454545]"
         href="/login"
       >
-        Login
+        Masuk
       </Link>
     </div>
   );
@@ -52,7 +53,7 @@ const ProductsWishlists = async ({ session }: { session: Session }) => {
   if (filteredWishlist && filteredWishlist?.length > 0) {
     return (
       <div className="pt-12">
-        <h2 className="mb-5 text-xl font-bold sm:text-2xl">YOUR WISHLISTS</h2>
+        <h2 className="mb-5 text-xl font-bold sm:text-2xl">WISHLIST ANDA</h2>
         <Products
           products={filteredWishlist}
           extraClassname={"colums-mobile"}
@@ -63,16 +64,16 @@ const ProductsWishlists = async ({ session }: { session: Session }) => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-91px)] gap-2 px-4">
-      <h1 className="mb-6 text-4xl font-bold">YOUR WISHLIST IS EMPTY</h1>
+      <h1 className="mb-6 text-4xl font-bold">WISHLIST ANDA KOSONG</h1>
       <p className="mb-4 text-lg">
-        When you have added something to the wishlist, it will appear here. Want
-        to get started?
+        Ketika Anda telah menambahkan sesuatu ke wishlist, item tersebut akan
+        muncul di sini. Ingin memulai?
       </p>
       <Link
         className="flex font-medium	 items-center bg-[#0C0C0C] justify-center text-sm min-w-[160px] max-w-[160px] h-[40px] px-[10px] rounded-md border border-solid border-[#2E2E2E] transition-all hover:bg-[#1F1F1F] hover:border-[#454545]"
         href="/"
       >
-        Start
+        Mulai Belanja
       </Link>
     </div>
   );

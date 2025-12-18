@@ -75,12 +75,12 @@ const Signup = () => {
             <div className="text-sm">{error}</div>
           </div>
         )}
-        <h1 className="w-full mb-5 text-2xl font-bold">Signup</h1>
+        <h1 className="w-full mb-5 text-2xl font-bold">Daftar</h1>
 
-        <label className={labelStyles}>Fullname:</label>
+        <label className={labelStyles}>Nama Lengkap:</label>
         <input
           type="text"
-          placeholder="Fullname"
+          placeholder="Nama Lengkap"
           className="w-full h-8 border text-[#A1A1A1] border-solid border-[#2E2E2E] bg-black py-1 px-2.5 rounded text-13"
           name="name"
         />
@@ -93,11 +93,11 @@ const Signup = () => {
           name="email"
         />
 
-        <label className={labelStyles}>Password:</label>
+        <label className={labelStyles}>Kata Sandi:</label>
         <div className="flex w-full">
           <input
             type={showPassword ? "text" : "password"}
-            placeholder="Password"
+            placeholder="Kata Sandi"
             className="w-full h-8 text-[#A1A1A1] border border-solid border-[#2E2E2E] bg-black py-1 px-2.5 rounded-l  text-13"
             name="password"
           />
@@ -142,10 +142,10 @@ const Signup = () => {
           </button>
         </div>
 
-        <label className={labelStyles}>Phone:</label>
+        <label className={labelStyles}>Nomor Telepon:</label>
         <input
           type="text"
-          placeholder="Phone (not required)"
+          placeholder="Nomor Telepon (opsional)"
           className="w-full h-8 text-[#A1A1A1] border border-solid border-[#2E2E2E] py-1 px-2.5 rounded bg-black text-13"
           name="phone"
         />
@@ -154,13 +154,13 @@ const Signup = () => {
           className="w-full bg-black border border-solid border-[#2E2E2E] py-1.5 mt-2.5 rounded transition-all hover:bg-[#1F1F1F] hover:border-[#454545] text-13"
           type="submit"
         >
-          Signup
+          Daftar
         </button>
 
         <div className="relative flex items-center justify-center w-full h-10">
           <div className="absolute w-full h-px top-2/4 bg-[#2E2E2E]"></div>
           <p className="z-10 flex items-center justify-center w-8 h-6 bg-background-secondary">
-            or
+            atau
           </p>
         </div>
 
@@ -194,13 +194,13 @@ const Signup = () => {
               fill="#EA4335"
             ></path>
           </svg>
-          Sign in with Google
+          Daftar dengan Google
         </button>
         <Link
           href="/login"
           className="text-sm transition-all duration-150 text-[#A1A1A1] ease hover:text-white"
         >
-          Already have an account?
+          Sudah punya akun?
         </Link>
       </form>
     </section>

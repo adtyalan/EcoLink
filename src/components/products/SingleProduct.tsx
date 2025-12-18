@@ -4,6 +4,7 @@ import { ProductImages } from "@/components/products/ProductImages";
 import { ProductDocument, VariantsDocument } from "@/types/types";
 import { Session } from "next-auth";
 import { useState } from "react";
+import { formatPrice } from "@/helpers/indonesianTranslations";
 import {
   Accordion,
   AccordionContent,
@@ -23,7 +24,7 @@ export const SingleProduct = ({ product, session }: SingleProduct) => {
   );
 
   if (!product) {
-    return <div>Produnct not found</div>;
+    return <div>Produk tidak ditemukan</div>;
   }
 
   return (
@@ -41,7 +42,9 @@ export const SingleProduct = ({ product, session }: SingleProduct) => {
             <h1 className="text-base font-semibold">
               {productPlainObject.name}
             </h1>
-            <span className="text-sm">{productPlainObject.price}€</span>
+            <span className="text-sm">
+              {formatPrice(productPlainObject.price)}
+            </span>
             <p className="text-sm">{productPlainObject.description}</p>
           </div>
 
@@ -55,43 +58,45 @@ export const SingleProduct = ({ product, session }: SingleProduct) => {
 
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-sm">COMPOSITION</AccordionTrigger>
+            <AccordionTrigger className="text-sm">KOMPOSISI</AccordionTrigger>
             <AccordionContent>
               <p>
-                We work with monitoring programmes to ensure compliance with our
-                social, environmental and health and safety standards for our
-                products. To assess compliance, we have developed a programme of
-                audits and continuous improvement plans.
+                Kami bekerja dengan program pemantauan untuk memastikan
+                kepatuhan terhadap standar sosial, lingkungan, dan kesehatan
+                serta keselamatan kami untuk produk kami. Untuk menilai
+                kepatuhan, kami telah mengembangkan program audit dan rencana
+                perbaikan berkelanjutan.
               </p>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
-            <AccordionTrigger className="text-sm">CARE</AccordionTrigger>
+            <AccordionTrigger className="text-sm">PERAWATAN</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2">
-              <p> Caring for your clothes is caring for the environment.</p>
+              <p>Merawat pakaian Anda adalah merawat lingkungan.</p>
               <p>
-                Lower temperature washes and delicate spin cycles are gentler on
-                garments and help to protect the colour, shape and structure of
-                the fabric. Furthermore, they reduce the amount of energy used
-                in care processes.
+                Mencuci dengan suhu lebih rendah dan siklus spin yang lembut
+                lebih lembut pada pakaian dan membantu melindungi warna, bentuk,
+                dan struktur kain. Selain itu, mereka mengurangi jumlah energi
+                yang digunakan dalam proses perawatan.
               </p>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
-            <AccordionTrigger className="text-sm">ORIGIN</AccordionTrigger>
+            <AccordionTrigger className="text-sm">ASAL</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2">
               <p>
-                We work with our suppliers, workers, unions and international
-                organisations to develop a supply chain in which human rights
-                are respected and promoted, contributing to the United Nations
-                Sustainable Development Goals.
+                Kami bekerja dengan pemasok, pekerja, serikat pekerja, dan
+                organisasi internasional untuk mengembangkan rantai pasokan di
+                mana hak asasi manusia dihormati dan dipromosikan, berkontribusi
+                pada Tujuan Pembangunan Berkelanjutan Perserikatan
+                Bangsa-Bangsa.
               </p>
               <p>
-                Thanks to the collaboration with our suppliers, we work to know
-                the facilities and processes used to manufacture our products in
-                order to understand their traceability.
+                Berkat kolaborasi dengan pemasok kami, kami bekerja untuk
+                mengetahui fasilitas dan proses yang digunakan untuk memproduksi
+                produk kami untuk memahami ketertelusuran mereka.
               </p>
-              <p>Made in Portugal</p>
+              <p>Dibuat di Portugal</p>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
