@@ -42,7 +42,7 @@ export const Images = ({
   return (
     <div className={!imageLoaded ? "relative" : ""}>
       <Image
-        loader={cloudinaryLoader}
+        // loader={cloudinaryLoader}
         width={width}
         height={height}
         src={image[0]}

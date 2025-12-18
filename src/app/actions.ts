@@ -19,11 +19,19 @@ export const getAllProducts = async () => {
 export const getCategoryProducts = async (category: string) => {
   try {
     await connectDB();
+    
+    // Kita tes cari TANPA filter dulu buat mastiin koneksinya beneran narik data
+    const allData = await Product.find().lean();
+    console.log("TOTAL SEMUA PRODUK DI DB:", allData.length);
+    
+    // Baru cari yang pake filter
+    const products = await Product.find({ category: category.toLowerCase() }).lean();
+    console.log("KATEGORI YANG DICARI:", category);
+    console.log("DATA COCOK:", products.length);
 
-    const products: EnrichedProducts[] = await Product.find({ category });
     return products;
   } catch (error) {
-    console.error("Error getting products:", error);
+    console.error("Error detail:", error);
     throw new Error("Failed to fetch category products");
   }
 };
