@@ -24,13 +24,14 @@ export function LinksDesktop() {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <Link
-                    className="flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none from-muted/50 to-muted focus:shadow-md bg-center bg-[url('/main-image.webp')]"
+                    className="relative flex flex-col justify-end w-full h-full p-6 no-underline rounded-md outline-none select-none overflow-hidden bg-center bg-cover bg-no-repeat bg-[url('/main-image-2.jpg')] 
+  before:absolute before:inset-0 before:bg-gradient-to-t before:from-black/70 before:to-transparent"
                     href="/"
                   >
-                    <div className="mt-4 mb-1 text-sm font-medium">
+                    <div className="mt-4 mb-1 text-sm font-medium relative z-10">
                       LIHAT SEMUA
                     </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
+                    <p className="text-sm leading-tight text-muted-foreground relative z-10">
                       Temukan produk pilihan untuk setiap kebutuhan Anda.
                     </p>
                   </Link>
